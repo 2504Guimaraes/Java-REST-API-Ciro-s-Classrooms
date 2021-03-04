@@ -41,4 +41,11 @@ public class Conta_Bancaria_Controller {
             return ResponseEntity.ok(conta);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        if (servico.deletar(id))
+            return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
 }
