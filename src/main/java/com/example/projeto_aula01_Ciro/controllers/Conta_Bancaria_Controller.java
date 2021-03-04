@@ -34,4 +34,11 @@ public class Conta_Bancaria_Controller {
         servico.criarNovaConta(novaConta);
         return ResponseEntity.ok(novaConta);
     }
+
+    @PutMapping
+    public ResponseEntity<?> put(@RequestBody Conta_Bancaria conta) {
+        if (servico.atualizar(conta))
+            return ResponseEntity.ok(conta);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
 }
