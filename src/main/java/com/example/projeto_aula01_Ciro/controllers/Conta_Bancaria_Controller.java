@@ -48,4 +48,24 @@ public class Conta_Bancaria_Controller {
             return ResponseEntity.ok().build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+    // Usar métodos GET e PUT como referência, pois
+    // o Get dá exemplo de como especificar o objeto que eu desejo
+    // modificar do BD por meio da query string / path variable.
+    // Já o método PUT contém um método interno, parecido com o que
+    // eu irei construir p/ modificar o objeto, chamado servico.atualizar(conta);
+
+    // Exercício 1.1: depositar(Long id, Float valor)
+
+    @PutMapping(value = "/{id}/{valor_depositado}")
+    public ResponseEntity<?> depositar(
+            @PathVariable("id") Long id,
+            @PathVariable("valor_depositado") Float valor) {
+
+        Conta_Bancaria _conta = servico.acharConta(id);
+        if (_conta != null)
+            if (servico.atualizarSaldo(_conta, valor))
+                return ResponseEntity.ok(_conta);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
 }
