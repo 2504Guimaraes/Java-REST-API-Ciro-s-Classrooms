@@ -49,6 +49,15 @@ public class Conta_Bancaria_Service {
         return false;
     }
 
+    public boolean atualizarSaldo(Conta_Bancaria conta, Float saldo) {
+        Conta_Bancaria _conta = acharConta(conta);
+        if (_conta != null) {
+            _conta.setSaldo(_conta.getSaldo() + saldo);
+            return true;
+        }
+        return false;
+    }
+
     public boolean deletar(Long id) {
         Conta_Bancaria _conta = acharConta(id);
         if (_conta != null) {
