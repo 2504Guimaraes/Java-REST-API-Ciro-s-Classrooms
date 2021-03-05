@@ -52,10 +52,12 @@ public class Conta_Bancaria_Service {
     public boolean atualizarSaldo(Conta_Bancaria conta, Float saldo) {
         Conta_Bancaria _conta = acharConta(conta);
         if (_conta != null) {
-            _conta.setSaldo(_conta.getSaldo() + saldo);
-            return true;
-        }
-        return false;
+            if (saldo > 0) {
+                _conta.setSaldo(_conta.getSaldo() + saldo);
+                return true;
+            }
+            return false;
+        } return false;
     }
 
     public boolean sacarValor(Conta_Bancaria conta, Float saque) {

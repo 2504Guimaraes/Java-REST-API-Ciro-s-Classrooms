@@ -63,10 +63,11 @@ public class Conta_Bancaria_Controller {
             @PathVariable("valor_depositado") Float valor) {
 
         Conta_Bancaria _conta = servico.acharConta(id);
-        if (_conta != null)
+        if (_conta != null) {
             if (servico.atualizarSaldo(_conta, valor))
                 return ResponseEntity.ok(_conta.getSaldo());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     // Exercício 1.2: sacar(Long id, Float valor)
