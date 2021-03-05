@@ -57,7 +57,7 @@ public class Conta_Bancaria_Controller {
 
     // Exercício 1.1: depositar(Long id, Float valor)
 
-    @PutMapping(value = "/{id}/{valor_depositado}")
+    @PutMapping(value = "depositar/{id}/{valor_depositado}")
     public ResponseEntity<?> depositar(
             @PathVariable("id") Long id,
             @PathVariable("valor_depositado") Float valor) {
@@ -67,5 +67,23 @@ public class Conta_Bancaria_Controller {
             if (servico.atualizarSaldo(_conta, valor))
                 return ResponseEntity.ok(_conta.getSaldo());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    // Exercício 1.2: sacar(Long id, Float valor)
+    // Nota: quando for fazer um novo método de requisição com parâmetros iguais,
+    // sertifique-se de que a rota foi alterada, para que o protocólo HTTP consiga diferenciar
+    // uma requisição da outra. Se não ele vai achar ambos os métodos ambíguos e dará erro 500.
+
+    @PutMapping(value = "sacar/{id}/{valor_sacado}")
+    public ResponseEntity<?> sacar(
+            @PathVariable("id") Long id,
+            @PathVariable("valor_sacado") Float valor) {
+
+        Conta_Bancaria _conta = servico.acharConta(id);
+        if (_conta != null) {
+            if (servico.sacarValor(_conta, valor))
+                return ResponseEntity.ok(valor);
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        } return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
