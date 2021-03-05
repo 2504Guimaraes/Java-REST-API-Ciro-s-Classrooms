@@ -65,7 +65,7 @@ public class Conta_Bancaria_Controller {
         Conta_Bancaria _conta = servico.acharConta(id);
         if (_conta != null)
             if (servico.atualizarSaldo(_conta, valor))
-                return ResponseEntity.ok(_conta);
+                return ResponseEntity.ok(_conta.getSaldo());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
