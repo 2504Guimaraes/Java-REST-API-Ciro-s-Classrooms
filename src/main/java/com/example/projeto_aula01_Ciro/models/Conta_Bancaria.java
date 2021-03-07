@@ -1,13 +1,19 @@
 package com.example.projeto_aula01_Ciro.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 public class Conta_Bancaria implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private  static Long nextId = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idContaBancaria;
     private Integer numeroAgencia;
     private String  numeroConta;
@@ -62,13 +68,6 @@ public class Conta_Bancaria implements Serializable {
 
     public Float getSaldo() {
         return this.saldo;
-    }
-
-
-    // Geração de ID Incremental:
-
-    public Long generateId() {
-        return nextId++;
     }
 
     // Métodos HashCode e Equals:
