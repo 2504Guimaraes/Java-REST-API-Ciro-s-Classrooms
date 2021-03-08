@@ -4,20 +4,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Table(name="Conta_Bancaria")
 public class Conta_Bancaria implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cd_conta")
     private Long idContaBancaria;
+    @Column(name = "cd_agencia")
     private Integer numeroAgencia;
+    @Column(name = "nm_conta", length = 10)
     private String  numeroConta;
+    @Column(name = "nm_titular", length = 100)
     private String nomeTitular;
+    @Column(name = "vl_saldo")
     private Float saldo;
 
     public Conta_Bancaria() { }
