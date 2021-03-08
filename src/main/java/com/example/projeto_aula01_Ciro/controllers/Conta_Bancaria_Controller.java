@@ -11,40 +11,48 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contas-bancarias")
-public class Conta_Bancaria_Controller {
+public class Conta_Bancaria_Controller
+        implements Controller_Interface<Conta_Bancaria> {
+
 
     @Autowired
     private Conta_Bancaria_Service servico;
 
+
+    @Override
     @GetMapping
-    public ResponseEntity<List<Conta_Bancaria>> pegarTodasAsContas() {
-        return ResponseEntity.ok(servico.acharTodasAsContas());
+    public ResponseEntity<List<Conta_Bancaria>> getAll() {
+        return ResponseEntity.ok(servico.findAll());
     }
 
+    @Override
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> get(@PathVariable("id") Long id) {
-        Conta_Bancaria _conta = servico.acharConta(id);
+        Conta_Bancaria _conta = servico.findById(id);
         if (_conta != null)
             return ResponseEntity.ok(_conta);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    @Override
     @PostMapping
     public ResponseEntity<Conta_Bancaria> post(@RequestBody Conta_Bancaria novaConta) {
-        servico.criarNovaConta(novaConta);
+        servico.create(novaConta);
         return ResponseEntity.ok(novaConta);
     }
 
+    @Override
     @PutMapping
     public ResponseEntity<?> put(@RequestBody Conta_Bancaria conta) {
-        if (servico.atualizar(conta))
+        if (servico.update(conta))
             return ResponseEntity.ok(conta);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    @Override
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
-        if (servico.deletar(id))
+        if (servico.delete(id))
             return ResponseEntity.ok().build();
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
@@ -57,6 +65,7 @@ public class Conta_Bancaria_Controller {
 
     // Exercício 1.1: depositar(Long id, Float valor)
 
+    /*
     @PutMapping(value = "depositar/{id}/{valor_depositado}")
     public ResponseEntity<?> depositar(
             @PathVariable("id") Long id,
@@ -68,13 +77,14 @@ public class Conta_Bancaria_Controller {
                 return ResponseEntity.ok(_conta.getSaldo());
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    }
+    } */
 
     // Exercício 1.2: sacar(Long id, Float valor)
     // Nota: quando for fazer um novo método de requisição com parâmetros iguais,
     // sertifique-se de que a rota foi alterada, para que o protocólo HTTP consiga diferenciar
     // uma requisição da outra. Se não ele vai achar ambos os métodos ambíguos e dará erro 500.
 
+    /*
     @PutMapping(value = "sacar/{id}/{valor_sacado}")
     public ResponseEntity<?> sacar(
             @PathVariable("id") Long id,
@@ -87,4 +97,5 @@ public class Conta_Bancaria_Controller {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         } return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+    */
 }
