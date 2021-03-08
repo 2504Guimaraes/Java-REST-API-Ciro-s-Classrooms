@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Conta_Bancaria_Repository extends JpaRepository <Conta_Bancaria, Long> {
+public interface Conta_Bancaria_Repository
+        extends JpaRepository <Conta_Bancaria, Long> {
 
 }

@@ -1,79 +1,49 @@
 package com.example.projeto_aula01_Ciro.services;
 
 import com.example.projeto_aula01_Ciro.models.Conta_Bancaria;
+import com.example.projeto_aula01_Ciro.repositories.Conta_Bancaria_Repository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class Conta_Bancaria_Service {
+public class Conta_Bancaria_Service implements Service_Interface<Conta_Bancaria>{
 
-    private static List<Conta_Bancaria> contasBancarias = new ArrayList<>();
+    @Autowired
+    private Conta_Bancaria_Repository repository;
 
-    public Conta_Bancaria_Service() { }
-
-    // Adiciona um novo um novo obj. do tipo Conta Bancária a minha lista:
-
-    public void criarNovaConta(Conta_Bancaria conta) {
-        conta.setIdContaBancaria(conta.generateId());
-        contasBancarias.add(conta);
+    @Override
+    public Conta_Bancaria create(Conta_Bancaria obj) {
+        repository.save(obj);
+        return obj;
     }
 
-    public List<Conta_Bancaria> acharTodasAsContas() {
-        return  contasBancarias;
+    @Override
+    public Conta_Bancaria findById(Long id) {
+        Optional<Conta_Bancaria> _conta = repository.findById(id);
+        return _conta.orElse(null);
     }
 
-    public Conta_Bancaria acharConta(Conta_Bancaria conta) {
-        for (Conta_Bancaria c : contasBancarias) {
-            if (c.equals(conta))
-                return c;
-        }
-        return null;
+    @Override
+    public List<Conta_Bancaria> findAll() {
+        return repository.findAll();
     }
 
-    // Sobrecarga do método acharConta:
-    public Conta_Bancaria acharConta(Long id) {
-        return acharConta(new Conta_Bancaria(id));
-    }
-
-    public boolean atualizar(Conta_Bancaria conta) {
-        Conta_Bancaria _conta = acharConta(conta);
-        if (_conta != null) {
-            _conta.setNumeroAgencia(conta.getNumeroAgencia());
-            _conta.setNumeroConta(conta.getNumeroConta());
-            _conta.setNomeTitular(conta.getNomeTitular());
-            _conta.setSaldo(conta.getSaldo());
+    @Override
+    public boolean update(Conta_Bancaria obj) {
+        if (repository.existsById(obj.getIdContaBancaria())) {
+            repository.save(obj);
             return true;
         }
         return false;
     }
 
-    public boolean atualizarSaldo(Conta_Bancaria conta, Float saldo) {
-        Conta_Bancaria _conta = acharConta(conta);
-        if (_conta != null) {
-            if (saldo > 0) {
-                _conta.setSaldo(_conta.getSaldo() + saldo);
-                return true;
-            }
-            return false;
-        } return false;
-    }
-
-    public boolean sacarValor(Conta_Bancaria conta, Float saque) {
-        Conta_Bancaria _conta = acharConta(conta);
-        if (_conta != null) {
-            if (_conta.getSaldo() >= saque) {
-                _conta.setSaldo(_conta.getSaldo() - saque);
-                return true;
-            }
-        }   return false;
-    }
-
-    public boolean deletar(Long id) {
-        Conta_Bancaria _conta = acharConta(id);
-        if (_conta != null) {
-            contasBancarias.remove(_conta);
+    @Override
+    public boolean delete(Long id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
             return true;
         }
         return false;
