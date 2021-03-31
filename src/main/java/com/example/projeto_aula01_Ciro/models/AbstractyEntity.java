@@ -13,14 +13,14 @@ public abstract class AbstractyEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idContaBancaria;
 
-    public Long getId() {
-        return id;
+    public Long getIdContaBancaria() {
+        return idContaBancaria;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdContaBancaria(Long id) {
+        this.idContaBancaria = id;
     }
 
     @Override
@@ -28,11 +28,11 @@ public abstract class AbstractyEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractyEntity that = (AbstractyEntity) o;
-        return id.equals(that.id);
+        return idContaBancaria.equals(that.idContaBancaria);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(idContaBancaria);
     }
 }
