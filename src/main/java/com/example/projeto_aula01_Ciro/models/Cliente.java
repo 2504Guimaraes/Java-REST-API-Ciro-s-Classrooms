@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "tb_cliente")
-public class Cliente extends AbstractyEntity {
+public abstract class Cliente extends AbstractyEntity {
     private static final long serialVersionUID = 1L;
 
     @Column(name = "nm_cliente", length = 60)
