@@ -1,7 +1,7 @@
 package com.example.projeto_aula01_Ciro.services;
 
-import com.example.projeto_aula01_Ciro.models.Conta_Bancaria;
-import com.example.projeto_aula01_Ciro.repositories.Conta_Bancaria_Repository;
+import com.example.projeto_aula01_Ciro.models.PessoaFisica;
+import com.example.projeto_aula01_Ciro.repositories.Pessoa_Fisica_Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,30 +9,30 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class Conta_Bancaria_Service implements Service_Interface<Conta_Bancaria>{
+public class Pessoa_Fisica_Service implements Service_Interface<PessoaFisica> {
 
     @Autowired
-    private Conta_Bancaria_Repository repository;
+    private Pessoa_Fisica_Repository repository;
 
     @Override
-    public Conta_Bancaria create(Conta_Bancaria obj) {
+    public PessoaFisica create(PessoaFisica obj) {
         repository.save(obj);
         return obj;
     }
 
     @Override
-    public Conta_Bancaria findById(Long id) {
-        Optional<Conta_Bancaria> _conta = repository.findById(id);
+    public PessoaFisica findById(Long id) {
+        Optional<PessoaFisica> _conta = repository.findById(id);
         return _conta.orElse(null);
     }
 
     @Override
-    public List<Conta_Bancaria> findAll() {
+    public List<PessoaFisica> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public boolean update(Conta_Bancaria obj) {
+    public boolean update(PessoaFisica obj) {
         if (repository.existsById(obj.getId())) {
             repository.save(obj);
             return true;
