@@ -1,11 +1,13 @@
 package com.example.projeto_aula01_Ciro.models;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_pessoa_juridica")
+@DiscriminatorValue("Pessoa Jurídica")
 public class PessoaJuridica extends Cliente {
     private static final long serialVersionUID = 1L;
 
