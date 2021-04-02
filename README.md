@@ -7,7 +7,7 @@ Aula 02 - Spring Data + Exercício 02
 
 #### Mudanças Importantes feitas
 
-- **Adição de Dependencias:**
+- **Adição de Dependencias**
     - Adicionanada **spring-boot-starter-data-jpa**, que é a API Java a qual é capaz
     fazer a comunicação entre a aplicação Java e a camada de persistência de dados / Banco.
     - Também adicionada a dependência **mysql-connector-java**; para conexão direta com o JDBC
