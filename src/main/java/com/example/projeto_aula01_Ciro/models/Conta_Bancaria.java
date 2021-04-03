@@ -1,13 +1,11 @@
 package com.example.projeto_aula01_Ciro.models;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
 
 @Entity
 @Table(name="Conta_Bancaria")
-@DiscriminatorValue("Conta Bancária")
 public class Conta_Bancaria extends AbstractyEntity {
 
     private static final long serialVersionUID = 1L;

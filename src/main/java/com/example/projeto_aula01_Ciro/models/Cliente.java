@@ -5,12 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-import javax.persistence.DiscriminatorColumn;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "tb_cliente")
-@DiscriminatorColumn(name = "nm_pertence_a_classe", length = 31)
 public abstract class Cliente extends AbstractyEntity {
     private static final long serialVersionUID = 1L;
 
