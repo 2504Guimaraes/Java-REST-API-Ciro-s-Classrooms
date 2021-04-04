@@ -7,7 +7,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "tb_cliente")
 public abstract class Cliente extends AbstractyEntity {
     private static final long serialVersionUID = 1L;
