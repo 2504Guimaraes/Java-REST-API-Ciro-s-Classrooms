@@ -3,7 +3,7 @@ Como o título já diz, esse arquivo tem como propósito auxiliar no controle do
 código pedido na matéria de Linguagens p/ Desenvolvimento de Servidores II.
 
 ### Fase de Produção
-Aula 03 - Herança com Spring JPA
+Aula 04 - Herança com Spring JPA
 
 #### Mudanças Importantes feitas
 Construção de todas as classes envolvendo as entidades 
