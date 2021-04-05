@@ -3,7 +3,7 @@ Como o título já diz, esse arquivo tem como propósito auxiliar no controle do
 código pedido na matéria de Linguagens p/ Desenvolvimento de Servidores II.
 
 ### Fase de Produção
-Aula 02 - Spring Data + Exercício 02
+Aula 03 - Spring Data + Exercício 02
 
 #### Mudanças Importantes feitas
 
