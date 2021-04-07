@@ -14,8 +14,6 @@ public class Conta_Bancaria extends AbstractyEntity {
     private Integer numeroAgencia;
     @Column(name = "nm_conta", length = 10)
     private String  numeroConta;
-    @Column(name = "nm_titular", length = 100)
-    private String nomeTitular;
     @Column(name = "vl_saldo")
     private Float saldo;
 
@@ -42,10 +40,6 @@ public class Conta_Bancaria extends AbstractyEntity {
         this.numeroConta = numeroInserido;
     }
 
-    public void setNomeTitular(String nomePessoa) {
-        this.nomeTitular = nomePessoa;
-    }
-
     public void setSaldo(Float saldoInserido) {
         this.saldo = saldoInserido;
     }
@@ -58,10 +52,6 @@ public class Conta_Bancaria extends AbstractyEntity {
 
     public String getNumeroConta() {
         return this.numeroConta;
-    }
-
-    public String getNomeTitular() {
-        return  this.nomeTitular;
     }
 
     public Float getSaldo() {
