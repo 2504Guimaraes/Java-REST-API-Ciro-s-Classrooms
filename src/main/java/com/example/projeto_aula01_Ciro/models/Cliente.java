@@ -6,6 +6,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.OneToOne;
+import javax.persistence.CascadeType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,7 +19,7 @@ public abstract class Cliente extends AbstractyEntity {
     @Column(name = "ds_endereco", length = 120)
     private String endereco;
 
-    @OneToOne
+    @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
     private Conta_Bancaria conta;
 
     public Cliente() { }
@@ -37,5 +38,13 @@ public abstract class Cliente extends AbstractyEntity {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public Conta_Bancaria getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta_Bancaria conta) {
+        this.conta = conta;
     }
 }
