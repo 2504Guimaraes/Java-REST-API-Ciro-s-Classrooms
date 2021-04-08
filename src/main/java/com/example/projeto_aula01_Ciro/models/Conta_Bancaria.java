@@ -19,6 +19,7 @@ public class Conta_Bancaria extends AbstractyEntity {
     private Float saldo;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "conta_id")
     private List<Movimentacao> movimentacoes;
 
 
