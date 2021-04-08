@@ -1,13 +1,14 @@
 package com.example.projeto_aula01_Ciro.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Conta_Bancaria")
 public class Conta_Bancaria extends AbstractyEntity {
-
     private static final long serialVersionUID = 1L;
 
     @Column(name = "cd_agencia")
@@ -17,18 +18,21 @@ public class Conta_Bancaria extends AbstractyEntity {
     @Column(name = "vl_saldo")
     private Float saldo;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Movimentacao> movimentacoes;
+
+
+    @JsonIgnore
+    public List<Movimentacao> getMovimentacoes() {
+        return movimentacoes;
+    }
+
+    @JsonProperty
+    public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+        this.movimentacoes = movimentacoes;
+    }
+
     public Conta_Bancaria() { }
-
-    /*
-      NOTA:
-      hashCode(), equals(),
-      setIdContaBancaria() e
-      getIdContaBancaria() já são herdados da minha classe abstrata
-      AbstractEntity.
-
-      O atributo Long IdContaBancaria e o construtor
-      Conta_Bancaria(Long idContaBancaria) também não são mais necessários.
-    */
 
     // Setters:
 
