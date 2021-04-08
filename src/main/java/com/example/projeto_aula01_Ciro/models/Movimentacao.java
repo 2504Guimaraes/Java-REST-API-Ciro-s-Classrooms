@@ -2,13 +2,12 @@ package com.example.projeto_aula01_Ciro.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.util.Calendar;
 
+
+@Table(name="tb_movimentacao")
+@Entity
 public class Movimentacao extends AbstractyEntity {
     private static final long serialVersionUID = 1L;
 
