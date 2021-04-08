@@ -43,6 +43,6 @@ interface **Movimentacao_Repository** para que a entidade Movimentação tenha s
 - VII. Retirando atributo **Lista de Movimentações** da classe **Conta_Bancaria**, para desfazer
 a relação `@OneToMany` e assim, substituí-la por uma relação `@ManyToOne`. *Do ponto de vista das tabelas no banco de dados não irá mudar nada, as mesmas tabelas serão geradas.*
   - **Motivo para fazer isso:**
-    - 1. Faz mais sentido que uma Movimentação não seja criada junto com a conta
+    - Faz mais sentido que uma Movimentação não seja criada junto com a conta
     bancária do seu portador.
   
