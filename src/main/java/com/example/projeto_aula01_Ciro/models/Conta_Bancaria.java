@@ -18,13 +18,12 @@ public class Conta_Bancaria extends AbstractyEntity {
     @Column(name = "vl_saldo")
     private Float saldo;
 
-    /*
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "conta_id")
+    @OneToMany(cascade = CascadeType.ALL,
+               orphanRemoval = true,
+               mappedBy = "conta_bancaria")
+    // @JoinColumn(name = "conta_id")
     private List<Movimentacao> movimentacoes;
-    */
 
-    /*
     @JsonIgnore
     public List<Movimentacao> getMovimentacoes() {
         return movimentacoes;
@@ -34,7 +33,6 @@ public class Conta_Bancaria extends AbstractyEntity {
     public void setMovimentacoes(List<Movimentacao> movimentacoes) {
         this.movimentacoes = movimentacoes;
     }
-    */
 
     public Conta_Bancaria() { }
 
