@@ -11,5 +11,7 @@ Aula 05 - Relacionamentos no JPA
 - II. Mudança de método de herança por meio de 
   `@Inheritance(strategy = InheritanceType.JOINED)` na classe **Cliente**.
 - III. Adição dos identificadores `@OneToOne` e `@JoinColumn` para relacionamento Um para Um.
-    - Mais os atributos específicos de cada identificador, para controle desde **configurações
-    de relacionamento entre as entidades**, até **identificação da foreign key da entidade "possuida"** + **confirmação de relacionamento Um para Um**.
+    - Mais os atributos específicos de cada identificador, para controle desde:
+      - 1. Configurações de relacionamento entre as entidades.
+      - 2. Identificação da foreign key da entidade possuída.
+      - 3. Confirmação de relacionamento *Um para Um*.
