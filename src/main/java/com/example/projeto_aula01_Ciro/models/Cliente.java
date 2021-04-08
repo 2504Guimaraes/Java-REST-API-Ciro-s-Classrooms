@@ -7,6 +7,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,6 +21,7 @@ public abstract class Cliente extends AbstractyEntity {
     private String endereco;
 
     @OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+    @JoinColumn(name="fk_conta_id", unique = true)
     private Conta_Bancaria conta;
 
     public Cliente() { }
