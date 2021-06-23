@@ -11,7 +11,9 @@ public class Categoria extends AbstractyEntity {
     @Column(name = "nm_categoria", length = 50)
     String nome;
 
-    public Categoria() { }
+    public Categoria() {
+        super();
+    }
 
     public String getNome() {
         return nome;

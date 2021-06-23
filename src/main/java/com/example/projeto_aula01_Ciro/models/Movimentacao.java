@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.List;
 
 
 @Table(name="tb_movimentacao")
@@ -31,6 +32,9 @@ public class Movimentacao extends AbstractyEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Conta_Bancaria conta;
 
+    @ManyToMany()
+    private List<Categoria> categorias;
+
     @JsonIgnore
     public Conta_Bancaria getConta() {
         return conta;
@@ -39,6 +43,16 @@ public class Movimentacao extends AbstractyEntity {
     @JsonProperty
     public void setConta(Conta_Bancaria conta) {
         this.conta = conta;
+    }
+
+    @JsonIgnore
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    @JsonProperty
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
     public Movimentacao () {
