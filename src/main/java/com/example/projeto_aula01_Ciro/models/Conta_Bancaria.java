@@ -20,7 +20,7 @@ public class Conta_Bancaria extends AbstractyEntity {
 
     @OneToMany(cascade = CascadeType.ALL,
                orphanRemoval = true,
-               mappedBy = "conta_bancaria")
+               mappedBy = "conta")
     // @JoinColumn(name = "conta_id")
     private List<Movimentacao> movimentacoes;
 
